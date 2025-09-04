@@ -205,6 +205,7 @@ def mainReq(url):
                         else:
                             print(f"[NOT/3]: {res3}")
                     else:
+                        print(f"[LINK]: {res1}")
                         print(f"[NOT/2]: {res2}")
                 else:
                     print(f"[NOT/1]: {url}")
