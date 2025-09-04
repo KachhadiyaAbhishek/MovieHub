@@ -1,6 +1,7 @@
 import requests
 from lxml import html
 import random
+import cloudscraper
 
 userAgents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
@@ -84,12 +85,14 @@ def makeReq2(url):
         # 'cookie': '_ga=GA1.1.367741597.1756722180; _ga_VPX61DM9S8=GS2.1.s1756993299$o7$g1$t1756993384$j60$l0$h0',
     }
 
+    scraper = cloudscraper.create_scraper()
+
     try:
-       response = requests.get(
+       response = scraper.get(
             url,
             cookies=cookies,
             headers=headers,
-           timeout=10
+           timeout=20
         )
 
        tree = html.fromstring(response.text)
