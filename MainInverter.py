@@ -88,7 +88,8 @@ def makeReq2(url):
        response = requests.get(
             url,
             cookies=cookies,
-            headers=headers
+            headers=headers,
+           timeout=10
         )
 
        tree = html.fromstring(response.text)
