@@ -55,6 +55,7 @@ def makeReq1(url):
         if downloadLink:
             return downloadLink[0]
         else:
+            print(f"[{response.status_code}]: {response}")
             return None
     except Exception as E:
         print(f"[ERROR]: {E}")
@@ -95,6 +96,7 @@ def makeReq2(url):
        if downloadLink:
            return downloadLink[0]
        else:
+           print(f"[{response.status_code}]: {response}")
            return None
     except Exception as E:
         print(f"[ERROR]: {E}")
@@ -141,6 +143,7 @@ def makeReq3(url):
                 else:
                     return downloadLink[0]
             else:
+                print(f"[{response.status_code}]: {response}")
                 return None
     except Exception as E:
         print(f"[ERROR]: {E}")
