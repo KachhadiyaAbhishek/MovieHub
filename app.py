@@ -3,16 +3,21 @@ from pymongo import MongoClient
 from datetime import datetime
 import re
 from MainInverter import main
+import os
 
 app = Flask(__name__)
 
 def fetchDate():
     return datetime.now().strftime("%Y_%m_%d")
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client["hdhub4u"]
+mongo_uri = os.environ.get("MONGO_URI")
+if not mongo_uri:
+    raise ValueError("❌ MONGO_URI not set. Please configure in Render dashboard.")
+
+client = MongoClient(mongo_uri)
+db = client["MovieHub"]
 # collection = db[f"movieList_{fetchDate()}"]
-collection = db[f"movieList_2025_09_01"]
+collection = db[f"movieList_2025_09_04"]
 
 @app.route('/', methods=['GET'])
 def showMovies():
