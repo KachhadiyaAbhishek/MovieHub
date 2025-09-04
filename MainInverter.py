@@ -64,9 +64,9 @@ def makeReq1(url):
 def makeReq2(url):
     cookies = {
         '_ga': 'GA1.1.367741597.1756722180',
-        '_ga_VPX61DM9S8': 'GS2.1.s1756830335$o4$g1$t1756830358$j37$l0$h0',
+        '_ga_VPX61DM9S8': 'GS2.1.s1756993299$o7$g1$t1756993384$j60$l0$h0',
     }
-
+    
     headers = {
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
         'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
@@ -77,17 +77,17 @@ def makeReq2(url):
         'sec-ch-ua-platform': '"Windows"',
         'sec-fetch-dest': 'document',
         'sec-fetch-mode': 'navigate',
-        'sec-fetch-site': 'none',
+        'sec-fetch-site': 'cross-site',
         'sec-fetch-user': '?1',
         'upgrade-insecure-requests': '1',
         'user-agent': f'{random.choice(userAgents)}',
-        # 'cookie': '_ga=GA1.1.367741597.1756722180; _ga_VPX61DM9S8=GS2.1.s1756830335$o4$g1$t1756830358$j37$l0$h0',
+        # 'cookie': '_ga=GA1.1.367741597.1756722180; _ga_VPX61DM9S8=GS2.1.s1756993299$o7$g1$t1756993384$j60$l0$h0',
     }
 
     try:
        response = requests.get(
             url,
-            # cookies=cookies,
+            cookies=cookies,
             headers=headers
         )
 
