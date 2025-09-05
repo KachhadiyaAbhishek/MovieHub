@@ -283,7 +283,7 @@ def mainReq(url):
                 if res1:
                     dwnType = {
                         'typeName': dwn[0],
-                        'link': res3,
+                        'link': res1,
                         'status': True
                     }
                     data.append(dwnType)
