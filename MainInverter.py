@@ -284,7 +284,7 @@ def mainReq(url):
                     dwnType = {
                         'typeName': dwn[0],
                         'link': res1,
-                        'status': True
+                        'status': False
                     }
                     data.append(dwnType)
                 else:
