@@ -159,6 +159,85 @@ def makeReq3(url):
         print(f"[ERROR]: {E}")
 
 
+# def mainReq(url):
+#     cookies = {
+#         'xla': 's4t',
+#         '_gid': 'GA1.2.1750497856.1756817011',
+#         '_ga_QFVL8KLXT6': 'GS2.1.s1756817011$o1$g1$t1756817016$j55$l0$h1840389665',
+#         '_ga': 'GA1.1.672934238.1756817011',
+#     }
+
+#     headers = {
+#         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+#         'accept-language': 'en-GB,en;q=0.9',
+#         'cache-control': 'max-age=0',
+#         'priority': 'u=0, i',
+#         'referer': 'https://hdhub4u.menu/',
+#         'sec-ch-ua': '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
+#         'sec-ch-ua-mobile': '?0',
+#         'sec-ch-ua-platform': '"Windows"',
+#         'sec-fetch-dest': 'empty',
+#         'sec-fetch-mode': 'navigate',
+#         'sec-fetch-site': 'same-origin',
+#         'upgrade-insecure-requests': '1',
+#         'user-agent': f'{random.choice(userAgents)}',
+#         # 'cookie': 'xla=s4t; _gid=GA1.2.1750497856.1756817011; _ga_QFVL8KLXT6=GS2.1.s1756817011$o1$g1$t1756817016$j55$l0$h1840389665; _ga=GA1.1.672934238.1756817011',
+#     }
+
+#     try:
+#         response = requests.get(
+#             url,
+#             # cookies=cookies,
+#             headers=headers,
+#         )
+
+#         tree = html.fromstring(response.text)
+#         downloadLink = tree.xpath('//a[contains(@href,"https://hubdrive.space/file")]/@href')
+#         downloadName = tree.xpath('//a[contains(@href,"https://hubdrive.space/file")]//text()')
+
+#         downloads = list(zip([n.strip() for n in downloadName], downloadLink))
+
+#         data = []
+#         if downloads:
+#             for dwn in downloads:
+#                 res1 = makeReq1(dwn[1])
+#                 if res1:
+#                     res2 = makeReq2(res1)
+#                     if res2:
+#                         res3 = makeReq3(res2)
+#                         if res3:
+#                             dwnType = {
+#                                 'typeName': dwn[0],
+#                                 'link': res3,
+#                                 'status': True
+#                             }
+#                             data.append(dwnType)
+#                         else:
+#                             print(f"[NOT/3]: {res3}")
+#                     else:
+#                         print(f"[LINK]: {res1}")
+#                         print(f"[NOT/2]: {res2}")
+#                 else:
+#                     print(f"[NOT/1]: {url}")
+#             return data
+#         else:
+#             downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href')
+#             downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()')
+
+#             downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
+
+#             for dwn in downloads:
+#                 dwnType = {
+#                     'typeName': dwn[0],
+#                     'link': dwn[1],
+#                     'status': False
+#                 }
+#                 data.append(dwnType)
+#             return data
+#     except Exception as E:
+#         print(f"[ERROR]: {E}")
+
+
 def mainReq(url):
     cookies = {
         'xla': 's4t',
@@ -202,23 +281,27 @@ def mainReq(url):
             for dwn in downloads:
                 res1 = makeReq1(dwn[1])
                 if res1:
-                    res2 = makeReq2(res1)
-                    if res2:
-                        res3 = makeReq3(res2)
-                        if res3:
-                            dwnType = {
-                                'typeName': dwn[0],
-                                'link': res3,
-                                'status': True
-                            }
-                            data.append(dwnType)
-                        else:
-                            print(f"[NOT/3]: {res3}")
-                    else:
-                        print(f"[LINK]: {res1}")
-                        print(f"[NOT/2]: {res2}")
+                    dwnType = {
+                        'typeName': dwn[0],
+                        'link': res3,
+                        'status': True
+                    }
+                    data.append(dwnType)
                 else:
                     print(f"[NOT/1]: {url}")
+            if not data:
+                downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href')
+                downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()')
+
+                downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
+
+                for dwn in downloads:
+                    dwnType = {
+                        'typeName': dwn[0],
+                        'link': dwn[1],
+                        'status': False
+                    }
+                    data.append(dwnType)
             return data
         else:
             downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href')
@@ -236,6 +319,7 @@ def mainReq(url):
             return data
     except Exception as E:
         print(f"[ERROR]: {E}")
+
 
 def main(url):
     # url = "https://hdhub4u.menu/gangnam-blues-2015-uncut-hindi-bluray-full-movie/"
