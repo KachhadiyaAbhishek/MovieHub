@@ -290,9 +290,9 @@ def mainReq(url):
                 else:
                     print(f"[NOT/1]: {url}")
             if not data:
-                downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href')
-                downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()')
-
+                downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/@href')
+                downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/text()')
+                
                 downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
 
                 for dwn in downloads:
@@ -304,9 +304,9 @@ def mainReq(url):
                     data.append(dwnType)
             return data
         else:
-            downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href')
-            downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()')
-
+            downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/@href')
+            downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/text()')
+            
             downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
 
             for dwn in downloads:
