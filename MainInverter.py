@@ -87,6 +87,9 @@ def makeReq2(url):
     proxies = {
         "http": "http://scraperapi:05c7a8245154c0388db59627aae8b957@proxy-server.scraperapi.com:8001"
     }
+
+    print(url)
+    print(headers)
         
     try:
        response = requests.get(
