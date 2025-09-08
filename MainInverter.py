@@ -289,34 +289,20 @@ def mainReq(url):
                     data.append(dwnType)
                 else:
                     print(f"[NOT/1]: {url}")
-            if not data:
-                downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/@href')
-                downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/text()')
-                
-                downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
+                    
+        downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href') or tree.xpath('//h3//a[contains(@href,"https://taazabull24.com")]/@href')
+        downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()') or tree.xpath('//h3//a[contains(@href,"https://taazabull24.com")]/text()')
+        
+        downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
 
-                for dwn in downloads:
-                    dwnType = {
-                        'typeName': dwn[0],
-                        'link': dwn[1],
-                        'status': False
-                    }
-                    data.append(dwnType)
-            return data
-        else:
-            downloadLink = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/@href')
-            downloadName = tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()') or tree.xpath('//h3/a[contains(@href,"https://taazabull24.com")]/text()')
-            
-            downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
-
-            for dwn in downloads:
-                dwnType = {
-                    'typeName': dwn[0],
-                    'link': dwn[1],
-                    'status': False
-                }
-                data.append(dwnType)
-            return data
+        for dwn in downloads:
+            dwnType = {
+                'typeName': dwn[0],
+                'link': dwn[1],
+                'status': False
+            }
+            data.append(dwnType)
+        return data
     except Exception as E:
         print(f"[ERROR]: {E}")
 
