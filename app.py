@@ -35,7 +35,7 @@ def showMovies():
     else:
         filter_query = {}
 
-    movies = list(collection.find(filter_query, {"_id": 0}).skip(skip).limit(per_page))
+    movies = list(collection.find(filter_query, {"_id": 0}).sort("scrapeDate",1).skip(skip).limit(per_page))
     total_movies = collection.count_documents(filter_query)
     total_pages = (total_movies + per_page - 1) // per_page
 
