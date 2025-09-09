@@ -241,9 +241,10 @@ def makeReq3(url):
 def mainReq(url):
     cookies = {
         'xla': 's4t',
-        '_gid': 'GA1.2.1750497856.1756817011',
-        '_ga_QFVL8KLXT6': 'GS2.1.s1756817011$o1$g1$t1756817016$j55$l0$h1840389665',
-        '_ga': 'GA1.1.672934238.1756817011',
+        '_gid': 'GA1.2.1015877472.1757413015',
+        'cf_clearance': 'oUc5nMYe.ch8gfxXyw_F_7aitLZy0uYMQCsNcFTV4kk-1757413961-1.2.1.1-KobsLRcBVLdD_GTU9TrxACtThHCi7cd8zFRLG.CK1qebnJ8aOrUgBnCDX6icGQkLKpUzRjtt9yU1PWrkfL3CbOAaY_tzUOkfBoo8lQfyMbjKQHq91UaF1RIuibWQ9bP.H.od273jJTjkyHP9JIx64ANqHgpc4bBnjthHqyugbG1s5tO84RnzJgT5QjS0v70vSy3gRLkzZ1HIOBSAbYkEfJgVb3Z1Xzr.uHaRuHu5vY0',
+        '_ga_QFVL8KLXT6': 'GS2.1.s1757413015$o1$g1$t1757414669$j52$l0$h1159473044',
+        '_ga': 'GA1.1.772809572.1757413015',
     }
 
     headers = {
@@ -251,7 +252,7 @@ def mainReq(url):
         'accept-language': 'en-GB,en;q=0.9',
         'cache-control': 'max-age=0',
         'priority': 'u=0, i',
-        'referer': 'https://hdhub4u.menu/',
+        'referer': 'https://hdhub4u.florist/',
         'sec-ch-ua': '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
@@ -260,13 +261,13 @@ def mainReq(url):
         'sec-fetch-site': 'same-origin',
         'upgrade-insecure-requests': '1',
         'user-agent': f'{random.choice(userAgents)}',
-        # 'cookie': 'xla=s4t; _gid=GA1.2.1750497856.1756817011; _ga_QFVL8KLXT6=GS2.1.s1756817011$o1$g1$t1756817016$j55$l0$h1840389665; _ga=GA1.1.672934238.1756817011',
+        # 'cookie': 'xla=s4t; _gid=GA1.2.1015877472.1757413015; cf_clearance=oUc5nMYe.ch8gfxXyw_F_7aitLZy0uYMQCsNcFTV4kk-1757413961-1.2.1.1-KobsLRcBVLdD_GTU9TrxACtThHCi7cd8zFRLG.CK1qebnJ8aOrUgBnCDX6icGQkLKpUzRjtt9yU1PWrkfL3CbOAaY_tzUOkfBoo8lQfyMbjKQHq91UaF1RIuibWQ9bP.H.od273jJTjkyHP9JIx64ANqHgpc4bBnjthHqyugbG1s5tO84RnzJgT5QjS0v70vSy3gRLkzZ1HIOBSAbYkEfJgVb3Z1Xzr.uHaRuHu5vY0; _ga_QFVL8KLXT6=GS2.1.s1757413015$o1$g1$t1757414669$j52$l0$h1159473044; _ga=GA1.1.772809572.1757413015',
     }
-
+    
     try:
         response = requests.get(
             url,
-            # cookies=cookies,
+            cookies=cookies,
             headers=headers,
         )
 
