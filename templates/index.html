@@ -386,10 +386,10 @@
         {% if movies %}
             {% for movie in movies %}
                 <div class="movie-card">
-                    <a href="{{ movie.movieLink }}" target="_blank">
+                    <a href="{{ movie.movieLink | fixUrl }}" target="_blank">
                         <img src="{{ movie.movieImage }}" alt="{{ movie.movieName }}">
                         <div class="movie-name">{{ movie.movieName }}</div>
-                        <div class="movie-link" onclick="location.href='/download?link={{ movie.movieLink | urlencode }}&name={{ movie.movieName }}';">Download Now</div>
+                        <div class="movie-link" onclick="location.href='/download?link={{ movie.movieLink | fixUrl | urlencode }}&name={{ movie.movieName }}';">Download Now</div>
                     </a>
                 </div>
             {% endfor %}
