@@ -303,6 +303,19 @@ def mainReq(url):
                 'status': False
             }
             data.append(dwnType)
+
+        downloadLink = tree.xpath('//h3/a[contains(@href,"https://gadgetsweb.xyz")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a/@href') or tree.xpath('//h3//a[contains(@href,"https://gadgetsweb.xyz")]/@href')
+        downloadName = tree.xpath('//h3/a[contains(@href,"https://gadgetsweb.xyz")]/span/em[not(contains(text(),"Watch"))]/parent::span/parent::a//text()') or tree.xpath('//h3//a[contains(@href,"https://gadgetsweb.xyz")]/text()')
+        
+        downloads = list(zip([n.strip() for n in downloadName if n != ']'], downloadLink))
+
+        for dwn in downloads:
+            dwnType = {
+                'typeName': dwn[0],
+                'link': dwn[1],
+                'status': False
+            }
+            data.append(dwnType)
         return data
     except Exception as E:
         print(f"[ERROR]: {E}")
