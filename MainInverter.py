@@ -310,6 +310,8 @@ def mainReq(url):
 
 def main(url):
     # url = "https://hdhub4u.menu/gangnam-blues-2015-uncut-hindi-bluray-full-movie/"
+    url = url.replace(".menu",".rehab")
+    url = url.replace(".tokyo",".rehab")
     results = mainReq(url)
     if results:
         # print(results)
