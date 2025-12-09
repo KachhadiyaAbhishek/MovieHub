@@ -55,6 +55,7 @@ def fixUrl(url):
     url = url.replace(".tokyo",".rehab")
     url = url.replace(".horse",".rehab")
     url = url.replace(".schule",".rehab")
+    url = url.replace(".florist",".rehab")
     return url
 
 @app.route('/download')
