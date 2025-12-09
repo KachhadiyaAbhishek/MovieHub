@@ -49,6 +49,12 @@ def showMovies():
         total_movies=total_movies
     )
 
+@app.template_filter('fixUrl')
+def fixUrl(url):
+    url = url.replace(".menu",".rehab")
+    url = url.replace(".tokyo",".rehab")
+    return url
+
 @app.route('/download')
 def downloadMovie():
     url = request.args.get('link', '').strip()
