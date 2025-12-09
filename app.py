@@ -53,6 +53,8 @@ def showMovies():
 def fixUrl(url):
     url = url.replace(".menu",".rehab")
     url = url.replace(".tokyo",".rehab")
+    url = url.replace(".horse",".rehab")
+    url = url.replace(".schule",".rehab")
     return url
 
 @app.route('/download')
